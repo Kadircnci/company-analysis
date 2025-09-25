@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FinAnalyzer - Finansal Olay Analiz Dashboard
 
-## Getting Started
+Teknoloji şirketlerinin yatırım, satın alma, ortaklık ve fonlama duyurularını otomatik tespit eden, olay öncesi/sonrası hisse hareketlerini analiz eden ve akıllı yatırım önerileri sunan kapsamlı finansal analiz platformu.
 
-First, run the development server:
+## 🚀 Özellikler
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 📊 Ana Dashboard
+- **Gerçek zamanlı özet kartlar**: Toplam olay sayısı, aktif şirketler, pozitif öneriler
+- **Son finansal olaylar**: En güncel duyurular ve analiz sonuçları
+- **Performans özeti**: En iyi performans gösteren şirketler ve risk uyarıları
+- **Hızlı erişim paneli**: Tüm sayfalara kolay navigasyon
+
+### 🏢 Şirketler Sayfası
+- **Kapsamlı şirket listesi**: 45+ teknoloji şirketi
+- **Gelişmiş filtreleme**: Sektör, öneri türü, tarih aralığı
+- **Detaylı bilgi kartları**: Hisse performansı, son olaylar, güven skorları
+- **Sektör bazlı analiz**: En aktif sektörler ve performans karşılaştırması
+
+### 📈 Detaylı Analizler
+- **Event-Study Grafikleri**: Olay öncesi/sonrası 30 günlük hisse analizi
+- **Sentiment Trend Analizi**: Duygu durumu ve haber hacmi takibi
+- **Yatırım Önerileri**: ARTTIR/BEKLE/DİKKAT önerileri + güven skoru
+- **Timeline Görünümü**: Kronolojik olay zaman çizelgesi
+- **Akıllı filtreleme**: Çoklu kriter bazlı analiz filtreleme
+
+### ⚙️ Sistem Ayarları
+- **Analiz parametreleri**: Güven eşiği, analiz periyodu, veri kaynakları
+- **Bildirim sistemi**: Email uyarıları, risk bildirimleri
+- **Güvenlik ayarları**: İki faktörlü doğrulama, veri şifreleme
+- **API konfigürasyonu**: Çoklu veri sağlayıcı entegrasyonu
+
+## 🛠️ Teknoloji Stack
+
+- **Frontend**: Next.js 15.5.4, React 19.1.0, TypeScript
+- **UI Framework**: ShadCN/UI, Tailwind CSS v4
+- **Grafikler**: Recharts
+- **İkonlar**: Lucide React
+- **Tarih İşlemleri**: date-fns
+- **HTTP Client**: Axios
+
+## 🎯 Analiz Motoru
+
+### Finansal Olay Tespit Sistemi
+- **Olay Türleri**: Yatırım, Satın Alma, Ortaklık, Fonlama
+- **Güven Skorlaması**: 0-100 arası güvenilirlik hesaplaması
+- **Otomatik sınıflandırma**: AI destekli olay kategorilendirme
+
+### Event-Study Analizi
+- **Abnormal Return hesaplama**: Market-adjusted getiri analizi
+- **Kümülatif Abnormal Return**: Olay etkisinin zaman içi takibi
+- **İstatistiksel anlamlılık**: T-test bazlı significance testing
+
+### Sentiment Analizi
+- **Çoklu kaynak**: Finansal haberler, sosyal medya, resmi duyurular
+- **Skorlama**: -1 ile +1 arası sentiment puanlaması
+- **Trend analizi**: Zaman bazlı duygu durumu değişimi
+
+### Yatırım Öneri Sistemi
+```typescript
+interface Recommendation {
+  type: 'increase_investment' | 'hold' | 'caution';
+  confidence: number; // 0-100
+  reasoning: string; // 1-2 cümlelik açıklama
+  expectedReturn: number; // Beklenen getiri %
+  riskLevel: 'low' | 'medium' | 'high';
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Kurulum ve Çalıştırma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Bağımlılıkları yükleyin
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Geliştirme sunucusunu başlatın
+npm run dev
 
-## Learn More
+# Tarayıcıda açın: http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Proje Yapısı
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── page.tsx           # Ana dashboard
+│   ├── companies/         # Şirketler sayfası
+│   ├── analysis/          # Detaylı analizler
+│   └── settings/          # Sistem ayarları
+├── components/
+│   ├── ui/                # ShadCN UI bileşenleri
+│   ├── layout/            # Layout bileşenleri (Navbar)
+│   └── dashboard/         # Dashboard bileşenleri
+└── types/
+    └── financial.ts       # TypeScript tip tanımları
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📊 Mock Data
 
-## Deploy on Vercel
+Sistem şu anda kapsamlı mock data ile çalışmaktadır:
+- **127 finansal olay** (son 90 gün)
+- **45 aktif şirket** (teknoloji sektörü)
+- **89 pozitif öneri** (%70 başarı oranı)
+- **%84 ortalama güven skoru**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔮 Gelecek Özellikler
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] **Gerçek API entegrasyonu**: Alpha Vantage, NewsAPI
+- [ ] **Machine Learning modeli**: Gelişmiş olay tespit algoritması
+- [ ] **Portfolio tracking**: Kişisel portföy takibi
+- [ ] **Alert sistemi**: WhatsApp, Telegram bildirimleri
+- [ ] **Sosyal trading**: Topluluk bazlı öneriler
+- [ ] **Backtesting**: Geçmiş performans analizi
+- [ ] **Export/Import**: Excel, PDF rapor çıktıları
+
+## 🎨 UI/UX Özellikleri
+
+- **Responsive tasarım**: Mobil-first yaklaşım
+- **Dark/Light mode**: Otomatik tema değişimi (Tailwind CSS)
+- **Accessibility**: WCAG 2.1 AA uyumlu
+- **Performance**: Next.js optimizasyonları
+- **SEO friendly**: Meta tag optimizasyonu
+
+## 📈 Dashboard KPI'ları
+
+| Metrik | Değer | Açıklama |
+|--------|-------|----------|
+| Toplam Şirket | 45 | Aktif izlenen teknoloji şirketi |
+| Analiz Edilen Olay | 127 | Son 90 gündeki finansal olaylar |
+| Ortalama Güven | %84 | Yüksek güvenilirlik skoru |
+| Pozitif Öneriler | 89 | %70 başarılı ARTTIR önerisi |
+
+## 🤝 Katkıda Bulunma
+
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit yapın (`git commit -m 'Add amazing feature'`)
+4. Push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
+
+## 📄 Lisans
+
+MIT License - Detaylar için `LICENSE` dosyasına bakınız.
+
+## 📞 İletişim
+
+**FinAnalyzer Team** - finansal analiz ve yatırım önerilerinde uzman ekip
+
+---
+
+*Bu proje Next.js ile geliştirilmiş modern bir finansal analiz platformudur. ShadCN/UI ve Tailwind CSS kullanarak responsive ve kullanıcı dostu bir deneyim sunar.*
