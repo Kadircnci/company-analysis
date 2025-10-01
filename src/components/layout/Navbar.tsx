@@ -23,6 +23,11 @@ const navigation = [
     icon: TrendingUp,
   },
   {
+    name: "AI Analysis",
+    href: "/enhanced-analysis",
+    icon: TrendingUp,
+  },
+  {
     name: "Ayarlar",
     href: "/settings",
     icon: Settings,

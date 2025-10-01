@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, TrendingDown, AlertTriangle, BarChart3, Calendar, Search, Building2, Activity } from "lucide-react";
 import Link from "next/link";
+import RealTimeDataCard from "@/components/real-time-data";
 
 export default function Dashboard() {
   return (
@@ -236,6 +237,11 @@ export default function Dashboard() {
               </CardContent>
             </Card>
           </Link>
+        </div>
+
+        {/* Alpha Vantage Real-Time Data */}
+        <div>
+          <RealTimeDataCard />
         </div>
       </div>
     </div>
